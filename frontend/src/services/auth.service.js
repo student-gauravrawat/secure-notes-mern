@@ -85,8 +85,8 @@ export const login = async(userData)=>{
                      }
          );
        if(!response) return null;
-       toast.success(response.data?.message)
-       return response.data.data;
+       toast.success(response?.data?.message)
+       return response?.data.data;
 
     } catch (error) {
         const msg = error?.response?.data?.error ||
@@ -102,7 +102,7 @@ export const logOut = async()=>{
    try {
         const response = await api.get(`/users/logout`)
         toast.success(response?.data?.message)
-        return response.data
+        return response?.data
 
    } catch (error) {
          const msg = error?.response?.data?.error ||
@@ -125,7 +125,7 @@ export const changePassword = async(data)=>{
         }
      )
      toast.success(response?.data?.message)
-     return response.data
+     return response?.data
 
    } catch (error) {
           const msg = error?.response?.data?.error ||
@@ -141,7 +141,7 @@ export const getUser = async()=>{
    try {
       const response = await api.get(`/users/get-user`)
     //    toast.success(response?.data?.message)
-       return response.data
+       return response?.data
 
    } catch (error) {
         const msg = error?.response?.data?.error ||
@@ -157,7 +157,7 @@ export const deleteAccount = async()=>{
    try {
      const response = await api.delete(`/users/delete-account`)
      toast.success(response?.data?.message)
-     return response.data
+     return response?.data
 
    } catch (error) {
         const msg = error?.response?.data?.error ||
