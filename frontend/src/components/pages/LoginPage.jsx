@@ -33,7 +33,7 @@ const LoginPage = () => {
 
       try {
           const response = await login(data)
-          console.log(response.user)
+          // console.log(response.user)
           dispatch(setAuthUser(response.user))
           navigate("/")
       } catch (error) {
