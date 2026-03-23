@@ -136,7 +136,12 @@ function SignPage() {
             type="submit"
             className="w-full py-3.5 bg-linear-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl shadow-lg shadow-indigo-200 hover:shadow-indigo-400 hover:-translate-y-1 active:scale-95 transition-all duration-200"
           >
-           {loading? "Registering..." : "Register"}
+           {loading? (
+                        <span className="flex items-center justify-center gap-2">
+                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                            Registering...
+                        </span>
+                     ) : "Register"}
           </button>
         </form>
 
