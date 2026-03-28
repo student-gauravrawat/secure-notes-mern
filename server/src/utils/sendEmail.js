@@ -1,25 +1,19 @@
-import nodemailer from "nodemailer"
+import sgMail from "@sendgrid/mail"
 import { ApiError } from "./ApiError.js"
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+console.log("API KEY:", process.env.SENDGRID_API_KEY ? "Loaded" : "Missing")
 
 export const sendEmail = async(to, otp)=>{
   try {
-     const transporter = nodemailer.createTransport({
-     service: "gmail",
-     auth: {
-         user: process.env.EMAIL_USER,
-         pass: process.env.EMAIL_PASS
-       }
-    })
-
-    await transporter.sendMail({
-     from : `"Secret Goals" <${process.env.EMAIL_USER}>`,
-     to,
-     subject: "Email Verification OTP",
-     html: `
-       <h2>Email Verification</h2>
-       <p>Your OTP is:</p>
-       <h1>${otp}</h1>
-       <p>Valid for 10 minutes</p>
+      await sgMail.send({
+      from:  process.env.EMAIL, 
+      to: to,                       
+      subject: "Email Verification OTP",
+      html: `
+        <h2>Email Verification OTP</h2>
+        <p>Your OTP is: <strong>${otp}</strong></p>
+        <p>Valid for 10 minutes</p>
       `
     })
   } catch (error) {
