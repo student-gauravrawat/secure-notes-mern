@@ -16,7 +16,7 @@ function SignPage() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    // console.log(user)
+    alert("please wait⏳ first API call takes time")
     setLoading(true)
 
     try {
