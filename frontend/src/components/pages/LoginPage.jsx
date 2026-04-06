@@ -19,6 +19,7 @@ const LoginPage = () => {
 
   const handleLogin = async(e)=>{
       e.preventDefault()
+      alert("Please wait first API takes time")
       setLoading(true)
 
       const data = {
